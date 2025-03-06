@@ -59,7 +59,7 @@ class UserController {
       const newUser = await UserService.create({
         name,
         email: normalizeEmail,
-        password: hashedPassword
+        password: hashedPassword,
       });
 
       if (!newUser) {
@@ -152,6 +152,24 @@ class UserController {
       res
         .clearCookie("refreshToken")
         .json(formatResponse(200, "Logout successfully"));
+    } catch ({ message }) {
+      console.error(message);
+      res
+        .status(500)
+        .json(formatResponse(500, "Internal server error", null, message));
+    }
+  }
+  static async getAll(req, res) {
+    try {
+      const users = await UserService.getAll();
+      if (!users) {
+        res
+          .status(400)
+          .json(
+            formatResponse(400, "Users not found", null, "Users not found")
+          );
+      }
+      res.json(formatResponse(200, "Users fetched successfully", users));
     } catch ({ message }) {
       console.error(message);
       res
