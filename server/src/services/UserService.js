@@ -15,6 +15,11 @@ class UserService {
     const user = await User.findByPk(userId);
     return user;
   }
+
+  static async getAll() {
+    const users = await User.findAll();
+    return users;
+  }
 }
 
 module.exports = UserService;
