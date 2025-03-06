@@ -10,7 +10,10 @@ function verifyRefreshToken(req, res, next) {
     next();
   } catch (error) {
     console.log("======= Invalid refresh token =======", error.message);
-    res.status(401).clearCookie("refreshToken").json(formatResponse(401, "Invalid refresh token", null, error.message));
+    res
+      .status(401)
+      .clearCookie("refreshToken")
+      .json(formatResponse(401, "Invalid refresh token", null, error.message));
   }
 }
 

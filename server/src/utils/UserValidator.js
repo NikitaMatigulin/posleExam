@@ -1,10 +1,6 @@
 class UserValidator {
-  static validateSignUp({ name, email, password}) {
-    if (
-      !name ||
-      name.trim().length === 0 ||
-      typeof name !== "string"
-    ) {
+  static validateSignUp({ name, email, password }) {
+    if (!name || name.trim().length === 0 || typeof name !== "string") {
       return {
         isValid: false,
         error: "Name is required and must non-empty string",

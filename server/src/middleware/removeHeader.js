@@ -1,5 +1,5 @@
 const removeHTTPHeader = (req, res, next) => {
-  res.removeHeader('x-powered-by');
+  res.removeHeader("x-powered-by");
   next();
 };
 

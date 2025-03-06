@@ -10,7 +10,9 @@ function verifyAccessToken(req, res, next) {
     next();
   } catch ({ message }) {
     console.log("======= Invalid access token =======", message);
-    res.status(403).json(formatResponse(403, "Invalid access token", null, message));
+    res
+      .status(403)
+      .json(formatResponse(403, "Invalid access token", null, message));
   }
 }
 
